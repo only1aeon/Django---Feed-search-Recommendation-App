@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    command: gunicorn live_social.wsgi:application -w 2 -k gthread -b 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    env_file:
+      - .env.dev
+    depends_on:
+      - redis
+      - db
+  worker:
+    build: .
+    command: celery -A live_social worker -l info --concurrency=1
+    env_file:
+      - .env.dev
+    depends_on:
+      - redis
+      - db
+  redis:
+    image: redis:7
+    ports:
+      - 6379:6379
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: live_social
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432

@@ -1,0 +1,15 @@
+Django>=4.2,<5
+djangorestframework>=3.14
+psycopg2-binary>=2.9
+celery[redis]>=5.2
+redis>=4.5
+numpy>=1.24
+faiss-cpu>=1.7.4
+torch>=2.0
+transformers>=4.35
+sentence-transformers>=2.2.2
+onnxruntime>=1.15
+python-dotenv
+librosa
+soundfile
+gunicorn
