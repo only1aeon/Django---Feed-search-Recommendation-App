@@ -1,6 +1,6 @@
-# Live-Social Recommendation & Hybrid Search (Upgraded)
+# Live-Social Recommendation & Hybrid Search Application
 
-This upgraded repo includes:
+This repo includes:
 - Django web app (feed + search)
 - FAISS (sharded) vector search integration
 - ASR lattice utilities (WhisperX hooks / stubs)
